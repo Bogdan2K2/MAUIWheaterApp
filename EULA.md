@@ -1,43 +1,49 @@
-# End User License Agreement (EULA)
+# End-User License Agreement (EULA)
 
-Effective date: 2026-03-28
+Effective date: 2026-03-11
 
-This End User License Agreement ("Agreement") is a legal agreement between you ("User") and the copyright holder(s) of this software ("Licensor") for the MAUI Weather App ("Software").
+This End-User License Agreement ("Agreement") is a legal agreement between you ("User") and the copyright holder of this software ("Licensor") for the use of the Virus Scanner software, including related source code, binaries, machine-learning models, weights, configuration files, and documentation ("Software").
 
-By installing, copying, accessing, or otherwise using the Software, you agree to be bound by this Agreement.
+By installing, accessing, running, copying, or using the Software, you agree to be bound by this Agreement.
 
-## 1. License Grant
+## 1. Grant of License
 
-Licensor grants you a limited, non-exclusive, non-transferable, revocable license to use the Software for personal, educational, and internal business purposes.
+Licensor grants you a limited, revocable, non-exclusive, non-transferable, non-sublicensable license to use the Software only as expressly authorized in a separate written approval from Licensor.
 
-## 2. Restrictions
+## 2. Ownership
 
-You may not:
+All rights, title, and interest in and to the Software remain exclusively with Licensor. This Agreement does not transfer any ownership rights to you.
 
-- Sell, sublicense, rent, lease, or redistribute the Software without prior written permission from Licensor.
-- Reverse engineer, decompile, or disassemble the Software except where explicitly allowed by applicable law.
-- Remove, alter, or obscure any copyright or proprietary notices.
+## 3. Restrictions
 
-## 3. Ownership
+You may not, without prior written consent from Licensor:
 
-All rights, title, and interest in and to the Software, including all intellectual property rights, remain with Licensor.
+- copy, distribute, publish, or resell the Software;
+- modify, adapt, translate, or create derivative works from the Software;
+- reverse engineer, decompile, disassemble, or attempt to extract source code, model weights, or proprietary logic;
+- use the Software or its outputs to train, fine-tune, benchmark, or build competing models or products;
+- remove or alter copyright, licensing, attribution, or proprietary notices.
 
-## 4. No Warranty
+## 4. Commercial Use
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+Commercial use is prohibited unless Licensor grants explicit written permission or a separate commercial agreement.
 
-## 5. Limitation of Liability
+## 5. Termination
 
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES ARISING OUT OF OR IN CONNECTION WITH THE USE OF THE SOFTWARE.
+This Agreement terminates automatically if you violate any term. Upon termination, you must immediately stop all use and destroy all copies in your possession or control.
 
-## 6. Termination
+## 6. Disclaimer of Warranty
 
-This Agreement is effective until terminated. Your rights under this Agreement terminate automatically if you fail to comply with any term.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 
-## 7. Governing Law
+## 7. Limitation of Liability
 
-This Agreement is governed by the laws applicable in Licensor's jurisdiction, without regard to conflict of law provisions.
+To the maximum extent permitted by applicable law, Licensor is not liable for any indirect, incidental, special, consequential, or punitive damages arising from use of the Software.
 
-## 8. Contact
+## 8. Third-Party Components
 
-Repository owner profile: <https://github.com/Bogdan2K2>
+The Software may include third-party components under their own licenses. Those licenses remain in force for those components. See THIRD_PARTY_NOTICES.json.
+
+## 9. Governing Law
+
+This Agreement is governed by applicable law agreed in writing between the parties. In the absence of such written agreement, mandatory legal provisions apply.
