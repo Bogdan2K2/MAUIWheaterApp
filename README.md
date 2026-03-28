@@ -30,20 +30,6 @@ dotnet build .\MauiAppWeather\MauiAppWeather.slnx -c Debug
 dotnet run --project .\MauiAppWeather\MauiAppWeatherClient\MauiAppWeatherClient.csproj -f net10.0-android
 ```
 
-## Screenshots
-
-### Splash Screen
-
-![Splash Screen](MauiAppWeather/MauiAppWeatherClient/Resources/Splash/splash.svg)
-
-### App Icon
-
-![App Icon](MauiAppWeather/MauiAppWeatherClient/Resources/AppIcon/appicon.svg)
-
-### In-App Asset
-
-![In-App Asset](MauiAppWeather/MauiAppWeatherClient/Resources/Images/dotnet_bot.png)
-
 ## License
 
 This project is distributed under the terms described in [EULA.md](./EULA.md).
