@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiAppWeatherClient.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiAppWeatherClient.Views"
+    xmlns:res="clr-namespace:MauiAppWeatherClient.Resources.Localization"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black"
+    Shell.TabBarBackgroundColor="White"
+    Title="MauiAppWeatherClient">
+
+   <Shell.ToolbarItems>
+      <ToolbarItem
+            Text="{x:Static res:AppResources.Settings}"
+            IconImageSource="settings.png"
+            Clicked="OnSettingsClicked"
+            Order="Primary"
+            Priority="0"/>
+
+   </Shell.ToolbarItems>
+
+   <TabBar>
+      <Tab Title="{x:Static res:AppResources.Home}" Icon="home.png">
+         <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+      </Tab>
+
+      <Tab Title="{x:Static res:AppResources.Hourly}" Icon="clock.png">
+         <ShellContent ContentTemplate="{DataTemplate local:HourlyPage}" />
+      </Tab>
+
+      <Tab Title="{x:Static res:AppResources.Daily}" Icon="calendar.png">
+         <ShellContent ContentTemplate="{DataTemplate local:DailyPage}" />
+      </Tab>
+
+      <Tab Title="{x:Static res:AppResources.Map}" Icon="map.png">
+         <ShellContent ContentTemplate="{DataTemplate local:MapPage}" />
+      </Tab>
+
+      <Tab Title="{x:Static res:AppResources.About}">
+         <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+      </Tab>
+   </TabBar>
+</Shell>

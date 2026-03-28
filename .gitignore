@@ -1,0 +1,69 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+# Build folders
+bin/
+obj/
+Debug/
+Release/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.ncb
+*.VC.db
+
+# Visual Studio
+.vs/
+.vscode/
+*.code-workspace
+
+# Rider IDE
+.idea/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+packages/
+# Uncomment if using Package Restore
+# !packages/build/
+
+# MAUI / Xamarin specific
+*.apk
+*.ap_
+*.aab
+*.xap
+*.ipa
+*.app
+*.appx
+*.msix
+*.dll
+*.pdb
+*.plist
+*.mobileprovision
+
+# iOS / MacCatalyst
+*.xcuserstate
+*.xcworkspace
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+
+# Android
+*.keystore
+*.cscfg
+*.lock
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.DS_Store

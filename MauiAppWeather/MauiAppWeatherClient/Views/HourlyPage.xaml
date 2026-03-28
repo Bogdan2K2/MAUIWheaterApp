@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MauiAppWeatherClient.Resources.Localization"
+             xmlns:viewModels="clr-namespace:MauiAppWeatherClient.ViewModels"
+             x:Class="MauiAppWeatherClient.Views.HourlyPage"
+             x:Name="HourlyPageRoot"
+             Title="{x:Static res:AppResources.Hourly}">
+    <Grid BackgroundColor="#EAECEF"
+          RowDefinitions="Auto,*">
+        <Grid Row="0"
+              BackgroundColor="#07153A"
+              Padding="20,24,20,44">
+            <VerticalStackLayout Spacing="18">
+                <Grid ColumnDefinitions="*,Auto"
+                      ColumnSpacing="10">
+                    <Border Grid.Column="0"
+                            VerticalOptions="Center"
+                            StrokeThickness="0"
+                            Padding="14,10"
+                            BackgroundColor="#2C395B">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="&#x2316;"
+                                   FontSize="20"
+                                   TextColor="White"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding SelectedCityDisplay}"
+                                   FontSize="20"
+                                   TextColor="White"
+                                   LineBreakMode="TailTruncation"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            HeightRequest="56"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End"
+                            BackgroundColor="#243155"
+                            StrokeThickness="0"
+                            Padding="12,10"
+                            MaximumWidthRequest="260">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="&#x1F514;"
+                                   FontSize="20"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding DaySummary}"
+                                   FontSize="13"
+                                   TextColor="White"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="1" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Label Text="{x:Static res:AppResources.Hourly}"
+                       FontSize="62"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <Border Grid.Row="1"
+                Margin="0,-28,0,0"
+                StrokeThickness="0"
+                BackgroundColor="#F7F7F8">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="38,38,0,0" />
+            </Border.StrokeShape>
+
+            <Grid RowDefinitions="Auto,*">
+                <Label Text="{Binding CurrentDateLabel}"
+                       FontSize="48"
+                       FontAttributes="Bold"
+                       Margin="26,20,26,14" />
+
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding HourlyItems}"
+                                SelectionMode="None">
+                    <CollectionView.EmptyView>
+                        <Label Text="{Binding ForecastStatus}"
+                               TextColor="#5B6272"
+                               Margin="20,30"
+                               FontSize="18"
+                               HorizontalTextAlignment="Center" />
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="viewModels:HourlyForecastItem">
+                            <Grid RowDefinitions="Auto,Auto"
+                                  RowSpacing="0">
+                                <Grid Grid.Row="0"
+                                      ColumnDefinitions="74,170,90,*,28"
+                                      Padding="20,14"
+                                      ColumnSpacing="10">
+                                    <Label Grid.Column="0"
+                                           Text="{Binding Hour}"
+                                           FontSize="42"
+                                           VerticalOptions="Center" />
+
+                                    <HorizontalStackLayout Grid.Column="1"
+                                                           Spacing="8"
+                                                           VerticalOptions="Center">
+                                        <Label Text="{Binding ConditionIcon}"
+                                               FontSize="30"
+                                               VerticalOptions="Center" />
+                                        <Label Text="&#x25D4;"
+                                               FontSize="18"
+                                               TextColor="#717888"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Precipitation}"
+                                               FontSize="20"
+                                               VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+
+                                    <Label Grid.Column="2"
+                                           Text="{Binding Temperature}"
+                                           FontSize="52"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center" />
+
+                                    <Label Grid.Column="3"
+                                           Text="{Binding Wind}"
+                                           FontSize="18"
+                                           VerticalOptions="Center" />
+
+                                    <Label Grid.Column="4"
+                                           Text="{Binding ExpandGlyph}"
+                                           FontSize="36"
+                                           TextColor="#667188"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference HourlyPageRoot}, Path=BindingContext.ToggleDescriptionCommand}"
+                                                                  CommandParameter="{Binding .}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                                <Border Grid.Row="1"
+                                        IsVisible="{Binding IsExpanded}"
+                                        StrokeThickness="0"
+                                        Margin="18,0,18,10"
+                                        Padding="14,10"
+                                        BackgroundColor="#EBEEF3">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <Label Text="{Binding ShortDescription}"
+                                           FontSize="15"
+                                           TextColor="#2E3340" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

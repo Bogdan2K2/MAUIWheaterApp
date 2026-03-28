@@ -1,0 +1,25 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:res="clr-namespace:MauiAppWeatherClient.Resources.Localization"
+    xmlns:map="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    x:Class="MauiAppWeatherClient.Views.MapPage"
+    Title="{x:Static res:AppResources.Map}">
+
+   <ContentPage.Content>
+      <OnPlatform x:TypeArguments="View">
+         <On Platform="Android">
+            <map:Map x:Name="MapControl" MapType="Street" />
+         </On>
+
+         <On Platform="WinUI">
+            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+               <Label Text="{x:Static res:AppResources.UnavailableMap}"
+                  HorizontalTextAlignment="Center"/>
+               <Label Text="{x:Static res:AppResources.AndroidOnly}"
+                  HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+         </On>
+      </OnPlatform>
+   </ContentPage.Content>
+</ContentPage>

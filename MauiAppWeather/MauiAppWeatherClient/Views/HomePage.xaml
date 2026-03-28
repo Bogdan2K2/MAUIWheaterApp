@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MauiAppWeatherClient.Resources.Localization"
+             xmlns:chart="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="MauiAppWeatherClient.Views.HomePage"
+             Title="{x:Static res:AppResources.Home}">
+
+    <Grid BackgroundColor="#07153A"
+          RowDefinitions="Auto,*">
+        <Border Grid.Row="0"
+                BackgroundColor="White"
+                StrokeThickness="0"
+                Padding="20,16">
+            <Grid ColumnDefinitions="*,Auto"
+                  RowDefinitions="Auto,Auto"
+                  ColumnSpacing="16"
+                  RowSpacing="10">
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Choose location:"
+                       FontSize="13"
+                       TextColor="#1C1C1C"
+                       VerticalOptions="Center" />
+
+                <Border Grid.Row="0"
+                        Grid.Column="1"
+                        BackgroundColor="#102249"
+                        StrokeThickness="1"
+                        Stroke="#1F3D75"
+                        Padding="14,12"
+                        WidthRequest="300"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Alerte inteligente"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="#F3F8FF" />
+                        <Label Text="{Binding SmartAlertsText}"
+                               FontSize="13"
+                               TextColor="{Binding SmartAlertsColor}"
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="#F3F6FB"
+                        Stroke="#E3E8F2"
+                        StrokeThickness="1"
+                        Padding="10,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Picker ItemsSource="{Binding Locations}"
+                            SelectedItem="{Binding SelectedLocation}"
+                            ItemDisplayBinding="{Binding CityName}"
+                            TextColor="#1C1C1C" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="16"
+                                 Padding="20,20,20,24">
+                <Border BackgroundColor="#0A1634"
+                        StrokeThickness="0"
+                        Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Forecast towards recent hours"
+                               FontAttributes="Bold"
+                               FontSize="17"
+                               TextColor="#EAF1FF" />
+
+                        <chart:ChartView HeightRequest="220"
+                                         Chart="{Binding Grafic}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#0A1634"
+                        StrokeThickness="0"
+                        Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Outlook"
+                               FontAttributes="Bold"
+                               FontSize="17"
+                               TextColor="#EAF1FF" />
+
+                        <Label Text="{Binding OutlookDescription}"
+                               FontSize="15"
+                               TextColor="#C6D6F4" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

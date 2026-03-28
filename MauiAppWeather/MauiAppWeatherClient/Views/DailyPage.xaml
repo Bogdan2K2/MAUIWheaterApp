@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MauiAppWeatherClient.Resources.Localization"
+             xmlns:viewModels="clr-namespace:MauiAppWeatherClient.ViewModels"
+             x:Class="MauiAppWeatherClient.Views.DailyPage"
+             x:Name="DailyPageRoot"
+             BackgroundColor="#07153A"
+             Title="{x:Static res:AppResources.Daily}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            <VerticalStackLayout Spacing="14"
+                                 Padding="20,28,20,14">
+                <Label Text="Pe zile"
+                       FontSize="52"
+                       FontAttributes="Bold"
+                       TextColor="#F3F7FF" />
+
+                <Border HorizontalOptions="Start"
+                        BackgroundColor="#2C395B"
+                        StrokeThickness="0"
+                        Padding="14,9">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="&#x2316;"
+                               FontSize="18"
+                               TextColor="#F3F7FF"
+                               VerticalOptions="Center" />
+                        <Label Text="{Binding SelectedCityDisplay}"
+                               FontSize="20"
+                               TextColor="#F3F7FF"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+
+                <CollectionView ItemsSource="{Binding DailyItems}"
+                                SelectionMode="None"
+                                HeightRequest="248"
+                                HorizontalScrollBarVisibility="Never"
+                                VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.EmptyView>
+                        <Label Text="{Binding ForecastStatus}"
+                               Margin="0,25,0,0"
+                               FontSize="17"
+                               TextColor="#C8D7F2" />
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="viewModels:DailyForecastItem">
+                            <Border WidthRequest="116"
+                                    Padding="12,10"
+                                    StrokeThickness="0"
+                                    BackgroundColor="{Binding CardBackground}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference DailyPageRoot}, Path=BindingContext.SelectDayCommand}"
+                                                          CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+
+                                <VerticalStackLayout Spacing="7">
+                                    <Label Text="{Binding DayLabel}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="{Binding PrimaryTextColor}" />
+                                    <Label Text="{Binding DayNumber}"
+                                           FontSize="29"
+                                           FontAttributes="Bold"
+                                           TextColor="{Binding PrimaryTextColor}" />
+                                    <Label Text="{Binding IconGlyph}"
+                                           FontSize="30"
+                                           Margin="0,4,0,0"
+                                           TextColor="#BCD0F3" />
+                                    <Label Text="{Binding MaxTemperature}"
+                                           FontSize="24"
+                                           FontAttributes="Bold"
+                                           TextColor="{Binding PrimaryTextColor}" />
+                                    <Label Text="{Binding MinTemperature}"
+                                           FontSize="19"
+                                           TextColor="{Binding SecondaryTextColor}" />
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Label Text="&#x25D4;"
+                                               FontSize="17"
+                                               TextColor="{Binding SecondaryTextColor}" />
+                                        <Label Text="{Binding Precipitation}"
+                                               FontSize="18"
+                                               TextColor="{Binding SecondaryTextColor}" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <Border Margin="0,8,0,0"
+                    StrokeThickness="0"
+                    BackgroundColor="#0A1634"
+                    Padding="16,16,16,20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="34,34,0,0" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="14">
+                    <Grid ColumnDefinitions="*,*"
+                          Padding="16,4,16,6">
+                        <VerticalStackLayout Spacing="8"
+                                             HorizontalOptions="Center">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShowDayCommand}" />
+                            </VerticalStackLayout.GestureRecognizers>
+                            <Label Text="Zi"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{Binding DayTabTextColor}" />
+                            <BoxView HeightRequest="4"
+                                     WidthRequest="86"
+                                     Color="{Binding DayTabUnderlineColor}"
+                                     HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="8"
+                                             HorizontalOptions="Center">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShowNightCommand}" />
+                            </VerticalStackLayout.GestureRecognizers>
+                            <Label Text="Noapte"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{Binding NightTabTextColor}" />
+                            <BoxView HeightRequest="4"
+                                     WidthRequest="150"
+                                     Color="{Binding NightTabUnderlineColor}"
+                                     HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*"
+                          RowDefinitions="Auto,Auto,Auto,Auto"
+                          ColumnSpacing="12"
+                          RowSpacing="12">
+                        <Border Grid.Row="0"
+                                Grid.Column="0"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Temperatura"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailTemperature}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="0"
+                                Grid.Column="1"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Temp resimtita"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailFeelsLike}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="1"
+                                Grid.Column="0"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Vant"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailWind}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="1"
+                                Grid.Column="1"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Conditie"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailCondition}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="2"
+                                Grid.Column="0"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Indice UV"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailUv}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="2"
+                                Grid.Column="1"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Umiditate"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailHumidity}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="3"
+                                Grid.Column="0"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Precipitatii"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailPrecipitation}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Grid.Row="3"
+                                Grid.Column="1"
+                                StrokeThickness="0"
+                                BackgroundColor="#15264D"
+                                Padding="14,12">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Nebulozitate"
+                                       FontSize="15"
+                                       TextColor="#9EB2D9" />
+                                <Label Text="{Binding DetailCloudiness}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="#F0F6FF" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
+                    <Border StrokeThickness="0"
+                            BackgroundColor="#081125"
+                            Padding="16,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
+                        <Label Text="{Binding SummaryText}"
+                               FontSize="17"
+                               TextColor="#EAF1FF"
+                               LineBreakMode="WordWrap" />
+                    </Border>
+
+                    <Button Text="Vezi detalii complete pentru ziua selectata"
+                            Command="{Binding OpenDetailsCommand}"
+                            IsEnabled="{Binding CanOpenDetails}"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            HeightRequest="54"
+                            CornerRadius="16"
+                            BackgroundColor="#EDF3FF"
+                            TextColor="#07153A" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

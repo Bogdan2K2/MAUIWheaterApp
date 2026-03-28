@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MauiAppWeatherClient/MauiAppWeatherClient.csproj" />
+  <Project Path="MauiAppWeatherModel/MauiAppWeatherModel.csproj" Id="63e7c692-95e4-4798-876d-cbdb6021028b" />
+  <Project Path="MauiAppWeatherRepository/MauiAppWeatherRepository.csproj" Id="2e6c8f11-bd2b-427f-a5fb-4be83302b580" />
+  <Project Path="MauiAppWeatherServices/MauiAppWeatherServices.csproj" Id="96a1c447-6519-43b5-bae1-39d56583e64c" />
+</Solution>

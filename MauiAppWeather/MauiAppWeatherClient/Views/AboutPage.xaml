@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppWeatherClient.Views.AboutPage"
+             BackgroundColor="#07153A"
+             Title="About">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,20,20,28"
+                             Spacing="14">
+            <Label Text="Despre aplicatie"
+                   FontSize="42"
+                   FontAttributes="Bold"
+                   TextColor="#F3F7FF" />
+
+            <Border BackgroundColor="#0A1634"
+                    StrokeThickness="0"
+                    Padding="14,12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="MauiAppWeather este o aplicatie meteo dezvoltata cu .NET MAUI."
+                           FontSize="16"
+                           TextColor="#D4E2FF" />
+
+                    <Label Text="Aplicatia afiseaza prognoza meteo pe intervale orare si zilnice, locatiile salvate si o pagina de setari."
+                           FontSize="16"
+                           TextColor="#D4E2FF" />
+
+                    <Label Text="Prin pagina principala poti selecta rapid orasul dorit, iar datele meteo sunt actualizate din servicii dedicate pentru acuratete si claritate."
+                           FontSize="16"
+                           TextColor="#D4E2FF" />
+
+                    <Label Text="Arhitectura proiectului este separata pe layere (Client, Services, Repository si Model), ceea ce face aplicatia mai usor de extins si de intretinut."
+                           FontSize="16"
+                           TextColor="#D4E2FF" />
+
+                    <Label Text="Scopul aplicatiei este sa ofere o experienta simpla, rapida si intuitiva pentru verificarea vremii in localiile preferate."
+                           FontSize="16"
+                           TextColor="#D4E2FF" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Dezvoltatori"
+                   FontSize="38"
+                   FontAttributes="Bold"
+                   TextColor="#F3F7FF"
+                   Margin="0,6,0,2" />
+
+            <Border BackgroundColor="#15264D"
+                    StrokeThickness="0"
+                    Padding="14,12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <FlexLayout Direction="Row"
+                            Wrap="Wrap">
+                    <Label Text="VOICU Ionut-Eduard - "
+                           FontSize="17"
+                           TextColor="#F3F7FF" />
+                    <Label Text="voicueduard22@stud.ase.ro"
+                           FontSize="17"
+                           TextColor="#BDD6FF"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEmailTapped"
+                                                  CommandParameter="mailto:voicueduard22@stud.ase.ro" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </FlexLayout>
+            </Border>
+
+            <Border BackgroundColor="#15264D"
+                    StrokeThickness="0"
+                    Padding="14,12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <FlexLayout Direction="Row"
+                            Wrap="Wrap">
+                    <Label Text="BELU Daniel Florin - "
+                           FontSize="17"
+                           TextColor="#F3F7FF" />
+                    <Label Text="beludaniel21@stud.ase.ro"
+                           FontSize="17"
+                           TextColor="#BDD6FF"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEmailTapped"
+                                                  CommandParameter="mailto:beludaniel21@stud.ase.ro" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </FlexLayout>
+            </Border>
+
+            <Border BackgroundColor="#15264D"
+                    StrokeThickness="0"
+                    Padding="14,12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <FlexLayout Direction="Row"
+                            Wrap="Wrap">
+                    <Label Text="BADINA Bogdan Stefan - "
+                           FontSize="17"
+                           TextColor="#F3F7FF" />
+                    <Label Text="badinabogdan21@stud.ase.ro"
+                           FontSize="17"
+                           TextColor="#BDD6FF"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEmailTapped"
+                                                  CommandParameter="mailto:badinabogdan21@stud.ase.ro" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </FlexLayout>
+            </Border>
+
+            <Border BackgroundColor="#15264D"
+                    StrokeThickness="0"
+                    Padding="14,12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <FlexLayout Direction="Row"
+                            Wrap="Wrap">
+                    <Label Text="DRAGOMIR Bogdan Cosmin - "
+                           FontSize="17"
+                           TextColor="#F3F7FF" />
+                    <Label Text="dragomircosmin20@stud.ase.ro"
+                           FontSize="17"
+                           TextColor="#BDD6FF"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEmailTapped"
+                                                  CommandParameter="mailto:dragomircosmin20@stud.ase.ro" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </FlexLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
