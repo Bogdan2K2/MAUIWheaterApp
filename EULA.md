@@ -1,6 +1,6 @@
 # End-User License Agreement (EULA)
 
-Effective date: 2026-03-11
+Effective date: 2026-03-28
 
 This End-User License Agreement ("Agreement") is a legal agreement between you ("User") and the copyright holder of this software ("Licensor") for the use of the Virus Scanner software, including related source code, binaries, machine-learning models, weights, configuration files, and documentation ("Software").
 
