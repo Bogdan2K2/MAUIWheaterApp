@@ -27,6 +27,16 @@ namespace MauiAppWeatherClient
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
              });
 
+#if ANDROID
+         Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("EnableMapScriptSupport", (handler, _) =>
+         {
+            handler.PlatformView.Settings.JavaScriptEnabled = true;
+            handler.PlatformView.Settings.DomStorageEnabled = true;
+            handler.PlatformView.Settings.BuiltInZoomControls = true;
+            handler.PlatformView.Settings.DisplayZoomControls = false;
+         });
+#endif
+
 #if DEBUG
          builder.Logging.AddDebug();
 #endif
