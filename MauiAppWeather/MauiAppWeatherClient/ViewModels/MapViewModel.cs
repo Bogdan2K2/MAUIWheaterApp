@@ -7,32 +7,35 @@ namespace MauiAppWeatherClient.ViewModels
 {
    public partial class MapViewModel : ObservableObject
    {
-      private ILocationsService _locationsService;
+      private readonly ILocationsService _locationsService;
 
       public MapViewModel(ILocationsService locationsService)
       {
-         this._locationsService = locationsService;
-
+         _locationsService = locationsService;
          Pins = new List<Pin>();
-         LoadAsync();
       }
 
       [ObservableProperty]
       private List<Pin> pins;
 
       [ObservableProperty]
-      private MapSpan mapSpan;
+      private MapSpan? mapSpan;
 
-      private async void LoadAsync()
+      public async Task LoadAsync()
       {
-         List<MauiAppWeatherModel.Location> locations = await _locationsService.GetLocationsAsync();
+         List<MauiAppWeatherModel.Location> locations = await _locationsService.GetLocationsAsync() ?? [];
+         locations = locations.Where(location => location.Active).ToList();
 
-         if (locations?.Count == 0)
+         if (locations.Count == 0)
          {
+            Pins = new List<Pin>();
+            MapSpan = null;
             return;
          }
 
-         MauiAppWeatherModel.Location current = locations.First();
+         MauiAppWeatherModel.Location current = locations.FirstOrDefault(location => location.IsCurrent)
+             ?? locations.First();
+
          Location currentLocation = new Location(current.Latitude, current.Longitude);
          MapSpan = MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(20));
 
@@ -43,7 +46,7 @@ namespace MauiAppWeatherClient.ViewModels
             double distance = Location.CalculateDistance(current.Latitude, current.Longitude,
                location.Latitude, location.Longitude, DistanceUnits.Kilometers);
 
-            if(distance <= 50)
+            if (distance <= 50)
             {
                pinList.Add(new Pin()
                {
